@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    Web 编程语言：
+    <ul>
+        <li v-for="language in languages">
+            {{ language }}
+        </li>
+    </ul>
+    <div>
+        <input type="text" v-model="newLanguage" @keyup.enter="addLanguage">
+    </div>
+</div>
+
+</body>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            languages: [
+                'PHP',
+                'JavaScript',
+                'Python',
+                'Golang',
+                'Java'
+            ],
+            newLanguage: '',
+        },
+        methods : {
+            addLanguage() {
+                this.languages.push(this.newLanguage);
+                this.newLanguage = ''
+            }
+        }
+    });
+</script>
+</html>

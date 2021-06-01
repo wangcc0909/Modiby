@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 组件开发</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>Web 编程语言：</p>
+    <languages></languages>
+</div>
+<script>
+    Vue.component('language',{
+        template: '<li><slot></slot></li>'
+    })
+    Vue.component('languages',{
+        data: function () {
+            return {
+                languages: ['PHP','JavaScript','Golang']
+            }
+        },
+        template: '<ul><language v-for="language in languages">{{ language }}</language></ul>'
+    })
+    var app = new Vue({
+        el: '#app'
+        })
+</script>
+</body>
+</html>

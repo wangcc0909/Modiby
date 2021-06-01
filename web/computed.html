@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性示例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .php {
+            color: cornflowerblue;
+        }
+        .javascript {
+            color: gold;
+        }
+        .golang {
+            color: aqua;
+        }
+        .python {
+            color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <p>Web开发框架</p>
+    <ul>
+        <li v-for="framework in sortedFrameworks" :class="framework.language">
+            {{ framework.name }}
+        </li>
+    </ul>
+    <hr>
+    框架：<input v-model="newFramework" name="framework">
+    语言：
+    <select v-model="newLanguage">
+        <option v-for="language in languages" v-text="language"></option>
+    </select>
+    <button @click="addFramework">新增框架</button>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            frameworks: [
+                {'name': 'Laravel', 'language': 'php'},
+                {'name': 'Vue', 'language': 'javascript'},
+                {'name': 'Gin', 'language': 'golang'},
+                {'name': 'Flash', 'language': 'python'},
+            ],
+            languages: [
+                'php','golang','javascript','python'
+            ],
+            newLanguage: '',
+            newFramework: '',
+        },
+        methods: {
+            addFramework() {
+                this.frameworks.push(
+                    {'name': this.newFramework, 'language': this.newLanguage}
+                );
+            }
+        },
+        computed: {
+            sortedFrameworks() {
+                return this.frameworks.sort((a,b) => {
+                    if (a.language < b.language) {
+                        return -1
+                    }else if (a.language > b.language) {
+                        return 1
+                    }else {
+                        return 0
+                    }
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性和类名绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .color-red {
+            color: red;
+        }
+        .color-orange {
+            color: orange;
+        }
+        .color-yellow {
+            color: yellow;
+        }
+        .color-green {
+            color: lawngreen;
+        }
+        .color-aqua {
+            color: aqua;
+        }
+        .color-blue {
+            color: blue;
+        }
+        .color-purple {
+            color: purple;
+        }
+        h1 {
+            width: 120px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <p>属性绑定:</p>
+    <a href="https://xueyuanjun.com" :title="title">学员君</a>
+    <hr>
+    <p>类名绑定:</p>
+    <h1 :class="curClass">学院君</h1>
+    <button @click="toggleClass">换个颜色</button>
+</div>
+<script>
+    Array.prototype.getRandomElement = function () {
+        return this[Math.floor(Math.random() * this.length)]
+    };
+    var app = new Vue({
+        el: '#app',
+        data: {
+            title: "致力于提供优质中文编程技术学习资源",
+            classes: [
+                'color-red',
+                'color-orange',
+                'color-yellow',
+                'color-green',
+                'color-blue',
+                'color-aqua',
+                'color-purple'
+            ],
+            curClass: 'color-red'
+        },
+        methods: {
+            toggleClass() {
+                this.curClass = this.classes.getRandomElement();
+            }
+        }
+    })
+</script>
+</body>
+</html>

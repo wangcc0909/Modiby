@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .propBtn {
+            margin: 2px 6px;
+            width: 23px;
+        }
+        .propBtn:hover {
+            color: #a9c4eb;
+            cursor: pointer;
+            box-shadow: 2px 2px 16px gray;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+
+<script>
+    var divContainer = document.getElementById('container');
+    divContainer.innerHTML = `<button class='propBtn add' title='add'>+</button>
+		<button class='propBtn remove' title='remove'>-</button>
+<button class='propBtn extend' title='extend'>➞</button>`;
+
+    divContainer.addEventListener('click',function (event) {
+        let target = event.target;
+        if (target.classList.contains('extend')) {
+            document.getElementsByClassName('propBtn add')[0].setAttribute('disabled',true);
+        }else {
+            document.getElementsByClassName('propBtn add')[0].removeAttribute('disabled');
+        }
+    })
+
+</script>
+</body>
+</html>
