@@ -134,5 +134,9 @@ P有本地队列，跟M是p：m = 1:1，本地队列存放的G数量不能超过
 \- d l c b p s 文件的类型 -rwxr--r-- 
 
 
+### Go-mirco全链路追踪
+- https://github.com/asim/go-micro/tree/master/plugins/wrapper/trace
+
+
 
 crucial industry certain check month arm comic elbow parent noise champion turkey
